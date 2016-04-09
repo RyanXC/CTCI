@@ -56,19 +56,21 @@ using namespace std;
 //return the index of the partition element.
 template<typename T, size_t N>
 int partition(T(&A)[N], int start, int end){
+	int i = strat - 1;
 	int j = start - 1;
 	int p = end;
 	int temp;
 
-	for (int i = start; i <= end - start; i++){
-		if (A[i] < A[p]){
-			j++;
-			//swap(i,j)
+	do{
+		j++;
+		if(A[j]<A[end]){
+			i++;
+			//swap A[i] with A[j];
 			temp = A[i];
 			A[i] = A[j];
 			A[j] = temp;
 		}
-	}
+	}while(j<end-1);
 
 	//swap(p, j+1)
 	temp = A[p];
